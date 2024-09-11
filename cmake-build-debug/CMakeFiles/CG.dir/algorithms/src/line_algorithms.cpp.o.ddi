@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

@@ -1,0 +1,29 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "Debug",
+	"cxx-modules" : {},
+	"dir-cur-bld" : "/home/jin/project/cpp_pro/CG/cmake-build-debug",
+	"dir-cur-src" : "/home/jin/project/cpp_pro/CG",
+	"dir-top-bld" : "/home/jin/project/cpp_pro/CG/cmake-build-debug",
+	"dir-top-src" : "/home/jin/project/cpp_pro/CG",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"/home/jin/project/cpp_pro/CG/mainwindow/include",
+		"/home/jin/project/cpp_pro/CG/canvas/include",
+		"/home/jin/project/cpp_pro/CG/algorithms/include",
+		"CG_autogen/include",
+		"/usr/include/qt6/QtCore",
+		"/usr/include/qt6",
+		"/usr/lib/qt6/mkspecs/linux-g++",
+		"/usr/include/qt6/QtWidgets",
+		"/usr/include/qt6/QtGui"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "/home/jin/project/cpp_pro/CG/cmake-build-debug/CMakeFiles/CG.dir"
+}

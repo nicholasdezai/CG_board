@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

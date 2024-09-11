@@ -1,0 +1,11 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/CG.dir/main.cpp.o: dyndep
+
+build CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o: dyndep
+
+build CMakeFiles/CG.dir/canvas/src/canvas.cpp.o: dyndep
+
+build CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o: dyndep
+
+build CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o: dyndep
+
