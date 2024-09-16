@@ -46,7 +46,7 @@ void Canvas::paintEvent(QPaintEvent *event) {
     painter.fillRect(rect(), backgroundColor);  // 填充背景色
 
     for (const auto &drawing : drawings) {
-        QPen pen(drawing.mode == Eraser ? backgroundColor : drawing.color, drawing.thickness);
+        QPen pen(drawing.mode == Eraser ? Qt::white : drawing.color, drawing.thickness);
         painter.setPen(pen);
         if (!drawing.points.empty()) {
             if (drawing.mode == Line || drawing.mode == Eraser || drawing.mode == Pencil) {
