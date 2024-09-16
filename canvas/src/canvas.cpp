@@ -41,15 +41,15 @@ void Canvas::setThickness(int newThickness) {
 }
 
 void Canvas::paintEvent(QPaintEvent *event) {
-    QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing, true);
+    QPainter painter(this); // 创建一个 QPainter 对象
+    painter.setRenderHint(QPainter::Antialiasing, true); // 抗锯齿
     painter.fillRect(rect(), backgroundColor);  // 填充背景色
 
     for (const auto &drawing : drawings) {
         QPen pen(drawing.mode == Eraser ? backgroundColor : drawing.color, drawing.thickness);
         painter.setPen(pen);
         if (!drawing.points.empty()) {
-            if (drawing.mode == Line || drawing.mode == Eraser) {
+            if (drawing.mode == Line || drawing.mode == Eraser || drawing.mode == Pencil) {
                 painter.drawPoints(drawing.points.data(), drawing.points.size());
             } else if (drawing.mode == Circle) {
                 QRect boundingRect(drawing.points[0], drawing.points[1]);
@@ -87,14 +87,15 @@ void Canvas::mousePressEvent(QMouseEvent *event) {
     startPoint = event->pos();
     currentPoints.clear();
     previewPoints.clear();
-    if (drawMode == Eraser) {
+    if (drawMode == Eraser || drawMode == Pencil) {
         currentPoints.push_back(startPoint);
     }
 }
 
 void Canvas::mouseMoveEvent(QMouseEvent *event) {
-    if (drawMode == Eraser) {
+    if (drawMode == Eraser || drawMode == Pencil) {
         currentPoints.push_back(event->pos());
+        drawings.push_back({drawMode, color, currentPoints, lineAlgorithm, thickness});
     } else {
         endPoint = event->pos();
         previewPoints.clear();
@@ -114,8 +115,6 @@ void Canvas::mouseMoveEvent(QMouseEvent *event) {
 
 void Canvas::mouseReleaseEvent(QMouseEvent *event) {
     endPoint = event->pos();
-    currentPoints.clear();
-    previewPoints.clear();
 
     if (drawMode == Line) {
         if (lineAlgorithm == Bresenham) {

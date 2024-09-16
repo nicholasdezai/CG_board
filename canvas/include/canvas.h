@@ -9,7 +9,8 @@
 enum DrawMode {
     Line,
     Circle,
-    Eraser
+    Eraser,
+    Pencil
 };
 
 enum LineAlgorithm {
@@ -20,7 +21,7 @@ enum LineAlgorithm {
 struct Drawing {
     DrawMode mode;
     QColor color;
-    std::vector<QPoint> points;
+    std::vector<QPoint> points; // 添加 points 以存储绘制的点
     LineAlgorithm lineAlgorithm;  // 添加 lineAlgorithm 以区分直线生成算法
     int thickness;  // 添加 thickness 以存储线条粗细
 };
@@ -54,8 +55,8 @@ private:
     int thickness;
     QPoint startPoint;
     QPoint endPoint;
-    std::vector<Drawing> drawings;
-    std::vector<QPoint> currentPoints;
+    std::vector<Drawing> drawings;     // 添加 drawings 以存储绘制的图形
+    std::vector<QPoint> currentPoints; // 添加 currentPoints 以存储当前绘制的点
     std::vector<QPoint> previewPoints; // 添加用于存储预览点的变量
 };
 

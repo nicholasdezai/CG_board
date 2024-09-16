@@ -27,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent)
     QAction *circleModeAction = toolbar->addAction("Circle Mode");
     connect(circleModeAction, &QAction::triggered, this, &MainWindow::setCircleMode);
 
+    QAction *pencilAction = toolbar->addAction("Pencil");
+    connect(pencilAction, &QAction::triggered, this, &MainWindow::setPencilMode);
+    toolbar->addAction(pencilAction);
+
     QAction *eraserModeAction = toolbar->addAction("Eraser Mode");
     connect(eraserModeAction, &QAction::triggered, this, &MainWindow::setEraserMode);
 
@@ -73,6 +77,10 @@ void MainWindow::setCircleMode() {
 
 void MainWindow::setEraserMode() {
     canvas->setDrawMode(Eraser);
+}
+
+void MainWindow::setPencilMode() {
+    canvas->setDrawMode(Pencil);
 }
 
 void MainWindow::setMidpointAlgorithm() {

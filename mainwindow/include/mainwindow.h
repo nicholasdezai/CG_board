@@ -21,6 +21,7 @@ public:
     void setLineMode();
     void setCircleMode();
     void setEraserMode();
+    void setPencilMode();
     void setMidpointAlgorithm();
     void setBresenhamAlgorithm();
     void changeThickness(int thickness);
