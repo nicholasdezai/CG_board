@@ -39,3 +39,17 @@ std::vector<QPoint> midpointCircle(int xc, int yc, int r) {
     }
     return points;
 }
+
+std::vector<QPoint> midpointOval(int xc, int yc, int rx, int ry) {
+    std::vector<QPoint> points;
+    // TODO: Implement the midpoint algorithm to draw an oval
+
+    return points;
+}
+
+std::vector<QPoint> plusminusArc(int xc, int yc, int r, int startAngle, int endAngle) {
+    std::vector<QPoint> points;
+    // TODO: Implement the plus-minus algorithm to draw an arc
+
+    return points;
+}

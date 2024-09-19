@@ -13,17 +13,32 @@ class MainWindow : public QMainWindow {
 
 public:
     MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
 
-    private slots:
-        void changeCanvasColor();
+private slots:
+    void changeCanvasColor();
+
     void changeCanvasBackgroundColor();
+
     void setLineMode();
+
     void setCircleMode();
+
     void setEraserMode();
+
     void setPencilMode();
+
     void setMidpointAlgorithm();
+
     void setBresenhamAlgorithm();
+
+    void setMidpointCircleAlgorithm();
+
+    void setMidpointOvalAlgorithm();
+
+    void setplusminusArcAlgorithm();
+
     void changeThickness(int thickness);
 
 private:
