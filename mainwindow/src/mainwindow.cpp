@@ -35,11 +35,20 @@ MainWindow::MainWindow(QWidget *parent)
     connect(eraserModeAction, &QAction::triggered, this, &MainWindow::setEraserMode);
 
     QMenu *algorithmMenu = menuBar->addMenu("&Algorithms");
-    QAction *midpointAlgorithmAction = algorithmMenu->addAction("Midpoint Line Algorithm");
-    connect(midpointAlgorithmAction, &QAction::triggered, this, &MainWindow::setMidpointAlgorithm);
+    QAction *midpointLineAlgorithmAction = algorithmMenu->addAction("Midpoint Line Algorithm");
+    connect(midpointLineAlgorithmAction, &QAction::triggered, this, &MainWindow::setMidpointAlgorithm);
 
-    QAction *bresenhamAlgorithmAction = algorithmMenu->addAction("Bresenham Line Algorithm");
-    connect(bresenhamAlgorithmAction, &QAction::triggered, this, &MainWindow::setBresenhamAlgorithm);
+    QAction *bresenhamLineAlgorithmAction = algorithmMenu->addAction("Bresenham Line Algorithm");
+    connect(bresenhamLineAlgorithmAction, &QAction::triggered, this, &MainWindow::setBresenhamAlgorithm);
+
+    QAction *midpointCircleAlgorithmAction = algorithmMenu->addAction("Midpoint Circle Algorithm");
+    connect(midpointCircleAlgorithmAction, &QAction::triggered, this, &MainWindow::setMidpointCircleAlgorithm);
+
+    QAction *midpointOvalAlgorithmAction = algorithmMenu->addAction("Midpoint Oval Algorithm");
+    connect(midpointOvalAlgorithmAction, &QAction::triggered, this, &MainWindow::setMidpointOvalAlgorithm);
+
+    QAction *plusminusArcAlgorithAction = algorithmMenu->addAction("PlusMinus Arc Algorithm");
+    connect(plusminusArcAlgorithAction, &QAction::triggered, this, &MainWindow::setplusminusArcAlgorithm);
 
     // 添加选择线条粗细的控件
     toolbar->addSeparator();
@@ -69,10 +78,12 @@ void MainWindow::changeCanvasBackgroundColor() {
 
 void MainWindow::setLineMode() {
     canvas->setDrawMode(Line);
+    canvas->setAlgorithm(Bresenham_line);
 }
 
 void MainWindow::setCircleMode() {
     canvas->setDrawMode(Circle);
+    canvas->setAlgorithm(Midpoint_circle);
 }
 
 void MainWindow::setEraserMode() {
@@ -84,11 +95,23 @@ void MainWindow::setPencilMode() {
 }
 
 void MainWindow::setMidpointAlgorithm() {
-    canvas->setLineAlgorithm(Midpoint);
+    canvas->setAlgorithm(Midpoint_line);
 }
 
 void MainWindow::setBresenhamAlgorithm() {
-    canvas->setLineAlgorithm(Bresenham);
+    canvas->setAlgorithm(Bresenham_line);
+}
+
+void MainWindow::setMidpointCircleAlgorithm() {
+    canvas->setAlgorithm(Midpoint_circle);
+}
+
+void MainWindow::setMidpointOvalAlgorithm() {
+    canvas->setAlgorithm(Midpoint_oval);
+}
+
+void MainWindow::setplusminusArcAlgorithm() {
+    canvas->setAlgorithm(plusminus_arc);
 }
 
 void MainWindow::changeThickness(int thickness) {

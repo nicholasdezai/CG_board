@@ -13,16 +13,19 @@ enum DrawMode {
     Pencil
 };
 
-enum LineAlgorithm {
-    Midpoint,
-    Bresenham
+enum Algorithms {
+    Midpoint_line,
+    Bresenham_line,
+    Midpoint_circle,
+    Midpoint_oval,
+    plusminus_arc,
 };
 
 struct Drawing {
     DrawMode mode;
     QColor color;
     std::vector<QPoint> points; // 添加 points 以存储绘制的点
-    LineAlgorithm lineAlgorithm;  // 添加 lineAlgorithm 以区分直线生成算法
+    Algorithms Algorithm;  // 添加 lineAlgorithm 以区分直线生成算法
     int thickness;  // 添加 thickness 以存储线条粗细
 };
 
@@ -37,7 +40,7 @@ public:
     QColor getBackgroundColor() const;
     void setBackgroundColor(const QColor &color);
     void setDrawMode(DrawMode mode);
-    void setLineAlgorithm(LineAlgorithm algorithm);
+    void setAlgorithm(Algorithms algorithm);
     int getThickness() const;
     void setThickness(int thickness);
 
@@ -46,12 +49,13 @@ protected:
     void mousePressEvent(QMouseEvent *event) override;
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
+    void mouseDoubleClickEvent(QMouseEvent *event) override;
 
 private:
     QColor color;
     QColor backgroundColor;
     DrawMode drawMode;
-    LineAlgorithm lineAlgorithm;
+    Algorithms Algorithm;
     int thickness;
     QPoint startPoint;
     QPoint endPoint;

@@ -55479,6 +55479,8 @@ namespace std {
 
 # 12 "/home/jin/project/cpp_pro/CG/algorithms/include/circle_algorithms.h"
 std::vector<QPoint> midpointCircle(int xc, int yc, int r);
+std::vector<QPoint> midpointOval(int xc, int yc, int rx, int ry);
+std::vector<QPoint> plusminusArc(int xc, int yc, int r, int startAngle, int endAngle);
 # 5 "/home/jin/project/cpp_pro/CG/algorithms/src/circle_algorithms.cpp" 2
 
 std::vector<QPoint> midpointCircle(int xc, int yc, int r) {
@@ -55515,5 +55517,19 @@ std::vector<QPoint> midpointCircle(int xc, int yc, int r) {
             points.push_back(QPoint(xc - y, yc - x));
         }
     }
+    return points;
+}
+
+std::vector<QPoint> midpointOval(int xc, int yc, int rx, int ry) {
+    std::vector<QPoint> points;
+
+
+    return points;
+}
+
+std::vector<QPoint> plusminusArc(int xc, int yc, int r, int startAngle, int endAngle) {
+    std::vector<QPoint> points;
+
+
     return points;
 }
