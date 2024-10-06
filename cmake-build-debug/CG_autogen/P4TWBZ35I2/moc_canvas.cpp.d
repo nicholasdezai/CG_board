@@ -214,6 +214,8 @@
   /usr/include/c++/14.2.1/debug/assertions.h \
   /usr/include/c++/14.2.1/debug/debug.h \
   /usr/include/c++/14.2.1/exception \
+  /usr/include/c++/14.2.1/experimental/any \
+  /usr/include/c++/14.2.1/experimental/bits/lfts_config.h \
   /usr/include/c++/14.2.1/ext/aligned_buffer.h \
   /usr/include/c++/14.2.1/ext/alloc_traits.h \
   /usr/include/c++/14.2.1/ext/atomicity.h \

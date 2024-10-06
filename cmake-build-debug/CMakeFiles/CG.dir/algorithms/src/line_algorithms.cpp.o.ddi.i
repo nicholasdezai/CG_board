@@ -27029,10 +27029,10 @@ typedef unsigned long long quint64;
 
 typedef qint64 qlonglong;
 typedef quint64 qulonglong;
-# 73 "/usr/include/qt6/QtCore/qtypes.h" 3 4
+# 75 "/usr/include/qt6/QtCore/qtypes.h" 3 4
 __extension__ typedef __int128_t qint128;
 __extension__ typedef __uint128_t quint128;
-# 89 "/usr/include/qt6/QtCore/qtypes.h" 3 4
+# 91 "/usr/include/qt6/QtCore/qtypes.h" 3 4
     namespace QtPrivate::NumberLiterals {
     namespace detail {
         template <quint128 accu, int base>
@@ -27093,11 +27093,11 @@ __extension__ typedef __uint128_t quint128;
     template <char...Cs>
     constexpr qint128 operator""_qint128() noexcept
     { return qint128(QtPrivate::NumberLiterals::detail::parse<Cs...>()); }
-# 157 "/usr/include/qt6/QtCore/qtypes.h" 3 4
+# 159 "/usr/include/qt6/QtCore/qtypes.h" 3 4
     }
-# 187 "/usr/include/qt6/QtCore/qtypes.h" 3 4
+# 189 "/usr/include/qt6/QtCore/qtypes.h" 3 4
 typedef double qreal;
-# 200 "/usr/include/qt6/QtCore/qtypes.h" 3 4
+# 202 "/usr/include/qt6/QtCore/qtypes.h" 3 4
 template <int> struct QIntegerForSize;
 template <> struct QIntegerForSize<1> { typedef quint8 Unsigned; typedef qint8 Signed; };
 template <> struct QIntegerForSize<2> { typedef quint16 Unsigned; typedef qint16 Signed; };
@@ -27113,11 +27113,10 @@ typedef QIntegerForSizeof<void *>::Unsigned quintptr;
 typedef QIntegerForSizeof<void *>::Signed qptrdiff;
 typedef qptrdiff qintptr;
 using qsizetype = QIntegerForSizeof<std::size_t>::Signed;
-# 258 "/usr/include/qt6/QtCore/qtypes.h" 3 4
+# 260 "/usr/include/qt6/QtCore/qtypes.h" 3 4
 namespace QtPrivate {
-# 271 "/usr/include/qt6/QtCore/qtypes.h" 3 4
+# 273 "/usr/include/qt6/QtCore/qtypes.h" 3 4
 using NativeFloat16Type = _Float16;
-
 
 
 
@@ -52945,7 +52944,7 @@ struct QVersionTag
 {
     const void *symbol;
     quintptr version;
-    constexpr QVersionTag(const void *sym, int currentVersion = ((6<<16)|(7<<8)|(2)))
+    constexpr QVersionTag(const void *sym, int currentVersion = ((6<<16)|(7<<8)|(3)))
         : symbol(sym), version(currentVersion)
     {}
 };
@@ -54861,6 +54860,7 @@ public:
 
 template<> class QTypeInfo<QKeyCombination > { public: enum { isComplex = (((Q_RELOCATABLE_TYPE) & Q_PRIMITIVE_TYPE) == 0) && !std::is_trivial_v<QKeyCombination>, isRelocatable = !isComplex || ((Q_RELOCATABLE_TYPE) & Q_RELOCATABLE_TYPE) || QtPrivate::qIsRelocatable<QKeyCombination>, isPointer [[deprecated("Use std::is_pointer instead")]] = std::is_pointer_v< QKeyCombination >, isIntegral [[deprecated("Use std::is_integral instead")]] = std::is_integral< QKeyCombination >::value, isValueInitializationBitwiseZero = QtPrivate::qIsValueInitializationBitwiseZero<QKeyCombination>, }; static_assert(!isRelocatable || std::is_copy_constructible_v<QKeyCombination > || std::is_move_constructible_v<QKeyCombination >, "QKeyCombination" " is neither copy- nor move-constructible, so cannot be Q_RELOCATABLE_TYPE"); };
 
+namespace Qt {
 constexpr QKeyCombination operator|(Qt::Modifier modifier, Qt::Key key) noexcept
 {
     return QKeyCombination(modifier, key);
@@ -54950,6 +54950,7 @@ constexpr QKeyCombination operator+(Qt::Key key, Qt::KeyboardModifiers modifiers
     return QKeyCombination(modifiers, key);
 }
 
+}
 
 
 # 8 "/usr/include/qt6/QtCore/qpoint.h" 2 3 4

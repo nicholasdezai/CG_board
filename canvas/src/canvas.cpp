@@ -6,7 +6,7 @@
 
 Canvas::Canvas(QWidget *parent)
     : QWidget(parent), color(Qt::black), backgroundColor(Qt::white), drawMode(Line), Algorithm(Bresenham_line),
-      thickness(1) {
+      thickness(1), is_selecting(false), id(-1) {
 }
 
 QColor Canvas::getColor() const {
@@ -48,62 +48,59 @@ void Canvas::paintEvent(QPaintEvent *event) {
     painter.fillRect(rect(), backgroundColor); // 填充背景色
 
     for (const auto &drawing: drawings) {
-        QPen pen(drawing.mode == Eraser ? Qt::white : drawing.color, drawing.thickness);
+        QPen pen(drawing.color, drawing.thickness);
         painter.setPen(pen);
+
         if (!drawing.points.empty()) {
             painter.drawPoints(drawing.points.data(), drawing.points.size());
+            // 打印顶点信息
+            for (const auto &vertex: drawing.vertexes) {
+                painter.drawText(vertex, QString("(%1, %2)").arg(vertex.x()).arg(vertex.y()));
+            }
         }
     }
 
     if (!currentPoints.empty()) {
-        QPen pen(drawMode == Eraser ? backgroundColor : color, thickness);
+        QPen pen(color, thickness);
         painter.setPen(pen);
         painter.drawPoints(currentPoints.data(), currentPoints.size());
-    }
-
-    if (!previewPoints.empty()) {
-        QPen pen(color, thickness, Qt::DashLine);
-        painter.setPen(pen);
-        for (size_t i = 1; i < previewPoints.size(); ++i) {
-            painter.drawPoints(previewPoints.data(), previewPoints.size());
-        }
     }
 }
 
 void Canvas::mousePressEvent(QMouseEvent *event) {
     startPoint = event->pos();
     currentPoints.clear();
-    previewPoints.clear();
-    if (drawMode == Eraser || drawMode == Pencil) {
-        currentPoints.push_back(startPoint);
+    if (drawMode != Polygon) {
+        vertexes.clear();
     }
+
+    vertexes.push_back(startPoint);
 }
 
 void Canvas::mouseMoveEvent(QMouseEvent *event) {
-    if (drawMode == Eraser || drawMode == Pencil) {
-        currentPoints.push_back(event->pos());
-        drawings.push_back({drawMode, color, currentPoints, Algorithm, thickness});
-    } else {
-        endPoint = event->pos();
-        previewPoints.clear();
-        if (drawMode == Line) {
-            if (Algorithm == Bresenham_line) {
-                previewPoints = bresenhamLine(startPoint.x(), startPoint.y(), endPoint.x(), endPoint.y());
-            } else if (Algorithm == Midpoint_line) {
-                previewPoints = midpointLine(startPoint.x(), startPoint.y(), endPoint.x(), endPoint.y());
-            }
-        } else if (drawMode == Circle) {
-            if (Algorithm == Midpoint_circle) {
-                previewPoints = midpointCircle(startPoint.x(), startPoint.y(),
-                                               qSqrt(qPow(endPoint.x() - startPoint.x(), 2) + qPow(endPoint.y() - startPoint.y(), 2)));
-            } else if (Algorithm == Midpoint_oval) {
-                previewPoints = midpointOval(startPoint.x(), startPoint.y(), qAbs(endPoint.x() - startPoint.x()),
-                                             qAbs(endPoint.y() - startPoint.y()));
-            } else if (Algorithm == plusminus_arc) {
-                previewPoints = plusminusArc(startPoint.x(), startPoint.y(),
-                                             qSqrt(qPow(endPoint.x() - startPoint.x(), 2) + qPow(endPoint.y() - startPoint.y(), 2)),
-                                             0, 120);
-            }
+    if (drawMode == Polygon) return;
+
+    endPoint = event->pos();
+    currentPoints.clear();
+    if (drawMode == Line) {
+        if (Algorithm == Bresenham_line) {
+            currentPoints = bresenhamLine(startPoint.x(), startPoint.y(), endPoint.x(), endPoint.y());
+        } else if (Algorithm == Midpoint_line) {
+            currentPoints = midpointLine(startPoint.x(), startPoint.y(), endPoint.x(), endPoint.y());
+        }
+    } else if (drawMode == Circle) {
+        if (Algorithm == Midpoint_circle) {
+            currentPoints = midpointCircle(startPoint.x(), startPoint.y(),
+                                           qSqrt(qPow(endPoint.x() - startPoint.x(), 2) + qPow(
+                                                     endPoint.y() - startPoint.y(), 2)));
+        } else if (Algorithm == Midpoint_oval) {
+            currentPoints = midpointOval(startPoint.x(), startPoint.y(), qAbs(endPoint.x() - startPoint.x()),
+                                         qAbs(endPoint.y() - startPoint.y()));
+        } else if (Algorithm == plusminus_arc) {
+            currentPoints = plusminusArc(startPoint.x(), startPoint.y(),
+                                         qSqrt(qPow(endPoint.x() - startPoint.x(), 2) + qPow(
+                                                   endPoint.y() - startPoint.y(), 2)),
+                                         0, 120);
         }
     }
     update();
@@ -111,6 +108,8 @@ void Canvas::mouseMoveEvent(QMouseEvent *event) {
 
 void Canvas::mouseReleaseEvent(QMouseEvent *event) {
     endPoint = event->pos();
+    vertexes.push_back(endPoint);
+
 
     if (drawMode == Line) {
         if (Algorithm == Bresenham_line) {
@@ -121,20 +120,53 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event) {
     } else if (drawMode == Circle) {
         if (Algorithm == Midpoint_circle) {
             currentPoints = midpointCircle(startPoint.x(), startPoint.y(),
-                                           qSqrt(qPow(endPoint.x() - startPoint.x(), 2) + qPow(endPoint.y() - startPoint.y(), 2)));
+                                           qSqrt(qPow(endPoint.x() - startPoint.x(), 2) + qPow(
+                                                     endPoint.y() - startPoint.y(), 2)));
         } else if (Algorithm == Midpoint_oval) {
             currentPoints = midpointOval(startPoint.x(), startPoint.y(), qAbs(endPoint.x() - startPoint.x()),
                                          qAbs(endPoint.y() - startPoint.y()));
         } else if (Algorithm == plusminus_arc) {
             currentPoints = plusminusArc(startPoint.x(), startPoint.y(),
-                                         qSqrt(qPow(endPoint.x() - startPoint.x(), 2) + qPow(endPoint.y() - startPoint.y(), 2)),
+                                         qSqrt(qPow(endPoint.x() - startPoint.x(), 2) + qPow(
+                                                   endPoint.y() - startPoint.y(), 2)),
                                          0, 120);
         }
-    } else if (drawMode == Eraser) {
-        currentPoints.push_back(endPoint);
+    } else if (drawMode == Polygon) {
+        vertexes.pop_back();
+        if (event->button() == Qt::LeftButton) {
+            if (vertexes.size() > 1) {
+                std::vector<QPoint> temp = bresenhamLine(vertexes[vertexes.size() - 2].x(),
+                                                         vertexes[vertexes.size() - 2].y(),
+                                                         vertexes[vertexes.size() - 1].x(),
+                                                         vertexes[vertexes.size() - 1].y());
+                currentPoints.insert(currentPoints.end(), temp.begin(), temp.end());
+            }
+        } else {
+            std::vector<QPoint> temp = bresenhamLine(vertexes[0].x(),
+                                                     vertexes[0].y(),
+                                                     vertexes[vertexes.size() - 2].x(),
+                                                     vertexes[vertexes.size() - 2].y());
+            currentPoints.insert(currentPoints.end(), temp.begin(), temp.end());
+            tempDrawing.vertexes = vertexes;
+            vertexes.clear();
+        }
     }
 
-    drawings.push_back({drawMode, color, currentPoints, Algorithm, thickness});
+
+    tempDrawing.mode = drawMode;
+    tempDrawing.color = color;
+    tempDrawing.points = currentPoints;
+    tempDrawing.Algorithm = Algorithm;
+    tempDrawing.thickness = thickness;
+    tempDrawing.is_selected = is_selecting;
+    tempDrawing.vertexes = vertexes;
+    if (is_selecting) {
+        tempDrawing.id = id;
+    } else {
+        tempDrawing.id = drawings.size();
+    }
+
+    drawings.push_back(tempDrawing);
     update();
 }
 

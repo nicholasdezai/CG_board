@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles/CG.dir/algorithms/src/polygon_algorithms.cpp.o",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

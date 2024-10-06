@@ -162,9 +162,9 @@ build CMakeFiles/CG.dir/CXX.dd | /home/jin/project/cpp_pro/CG/cmake-build-debug/
 #############################################
 # Link the executable CG
 
-build CG: CXX_EXECUTABLE_LINKER__CG_Debug CMakeFiles/CG.dir/CG_autogen/mocs_compilation.cpp.o CMakeFiles/CG.dir/main.cpp.o CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o CMakeFiles/CG.dir/canvas/src/canvas.cpp.o CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o | /usr/lib/libQt6Widgets.so.6.7.2 /usr/lib/libQt6Gui.so.6.7.2 /usr/lib/libQt6Core.so.6.7.2 /usr/lib/libGLX.so /usr/lib/libOpenGL.so || CG_autogen CG_autogen_timestamp_deps
+build CG: CXX_EXECUTABLE_LINKER__CG_Debug CMakeFiles/CG.dir/CG_autogen/mocs_compilation.cpp.o CMakeFiles/CG.dir/main.cpp.o CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o CMakeFiles/CG.dir/canvas/src/canvas.cpp.o CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o | /usr/lib/libQt6Widgets.so.6.7.3 /usr/lib/libQt6Gui.so.6.7.3 /usr/lib/libQt6Core.so.6.7.3 /usr/lib/libGLX.so /usr/lib/libOpenGL.so || CG_autogen CG_autogen_timestamp_deps
   FLAGS = -g
-  LINK_LIBRARIES = /usr/lib/libQt6Widgets.so.6.7.2  /usr/lib/libQt6Gui.so.6.7.2  /usr/lib/libQt6Core.so.6.7.2  /usr/lib/libGLX.so  /usr/lib/libOpenGL.so
+  LINK_LIBRARIES = /usr/lib/libQt6Widgets.so.6.7.3  /usr/lib/libQt6Gui.so.6.7.3  /usr/lib/libQt6Core.so.6.7.3  /usr/lib/libGLX.so  /usr/lib/libOpenGL.so
   OBJECT_DIR = CMakeFiles/CG.dir
   POST_BUILD = :
   PRE_LINK = :

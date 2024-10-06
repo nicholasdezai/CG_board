@@ -277,7 +277,8 @@ CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o.ddi: \
  /usr/include/qt6/QtCore/qarraydatapointer.h \
  /usr/include/qt6/QtCore/qarraydataops.h \
  /usr/include/qt6/QtCore/qcontainertools_impl.h \
- /usr/include/qt6/QtCore/qxptype_traits.h /usr/include/c++/14.2.1/cstring \
+ /usr/include/qt6/QtCore/qxptype_traits.h \
+ /usr/include/qt6/QtCore/q20type_traits.h /usr/include/c++/14.2.1/cstring \
  /usr/include/c++/14.2.1/iterator \
  /usr/include/c++/14.2.1/bits/stream_iterator.h \
  /usr/include/c++/14.2.1/algorithm \
@@ -291,9 +292,7 @@ CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o.ddi: \
  /usr/include/qt6/QtCore/q20memory.h \
  /usr/include/qt6/QtCore/qbytearrayalgorithms.h \
  /usr/include/qt6/QtCore/qbytearrayview.h \
- /usr/include/qt6/QtCore/qstringfwd.h \
- /usr/include/qt6/QtCore/q20type_traits.h \
- /usr/include/c++/14.2.1/stdlib.h \
+ /usr/include/qt6/QtCore/qstringfwd.h /usr/include/c++/14.2.1/stdlib.h \
  /usr/include/qt6/QtCore/qstringliteral.h \
  /usr/include/qt6/QtCore/qstringalgorithms.h \
  /usr/include/qt6/QtCore/qlatin1stringview.h \
@@ -388,6 +387,8 @@ CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o.ddi: \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
  /usr/include/qt6/QtCore/QPoint /usr/include/qt6/QtCore/qpoint.h \
+ /usr/include/c++/14.2.1/experimental/any \
+ /usr/include/c++/14.2.1/experimental/bits/lfts_config.h \
  /usr/include/qt6/QtWidgets/QColorDialog \
  /usr/include/qt6/QtWidgets/qcolordialog.h \
  /usr/include/qt6/QtWidgets/qdialog.h \

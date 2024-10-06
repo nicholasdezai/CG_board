@@ -25,9 +25,7 @@ private slots:
 
     void setCircleMode();
 
-    void setEraserMode();
-
-    void setPencilMode();
+    void setPolygonMode();
 
     void setMidpointAlgorithm();
 
