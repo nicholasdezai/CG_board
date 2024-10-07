@@ -8,5 +8,6 @@
 #include "circle_algorithms.h"
 #include "line_algorithms.h"
 #include "polygon_algorithms.h"
+#include "coord.h"
 
 #endif //ALGORITHMS_H

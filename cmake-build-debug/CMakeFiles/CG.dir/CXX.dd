@@ -9,3 +9,5 @@ build CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o: dyndep
 
 build CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o: dyndep
 
+build CMakeFiles/CG.dir/algorithms/src/coord.cpp.o: dyndep
+

@@ -30,6 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     QAction *polygonModeAction = toolbar->addAction("Polygon Mode");
     connect(polygonModeAction, &QAction::triggered, this, &MainWindow::setPolygonMode);
 
+    QAction *selectModeAction = toolbar->addAction("Select Mode");
+    connect(selectModeAction, &QAction::triggered, this, &MainWindow::setSelectMode);
+
     QMenu *algorithmMenu = menuBar->addMenu("&Algorithms");
     QAction *midpointLineAlgorithmAction = algorithmMenu->addAction("Midpoint Line Algorithm");
     connect(midpointLineAlgorithmAction, &QAction::triggered, this, &MainWindow::setMidpointAlgorithm);
@@ -84,6 +87,10 @@ void MainWindow::setCircleMode() {
 
 void MainWindow::setPolygonMode() {
     canvas->setDrawMode(Polygon);
+}
+
+void MainWindow::setSelectMode() {
+    canvas->setDrawMode(Select);
 }
 
 void MainWindow::setMidpointAlgorithm() {

@@ -400,6 +400,12 @@
 			null
 		],
 		[
+			"/home/jin/project/cpp_pro/CG/algorithms/include/coord.h",
+			"MU",
+			"KPMU3T524P/moc_coord.cpp",
+			null
+		],
+		[
 			"/home/jin/project/cpp_pro/CG/algorithms/include/line_algorithms.h",
 			"MU",
 			"KPMU3T524P/moc_line_algorithms.cpp",
@@ -485,6 +491,7 @@
 			"MU",
 			null
 		],
+		[ "/home/jin/project/cpp_pro/CG/algorithms/src/coord.cpp", "MU", null ],
 		[
 			"/home/jin/project/cpp_pro/CG/algorithms/src/line_algorithms.cpp",
 			"MU",

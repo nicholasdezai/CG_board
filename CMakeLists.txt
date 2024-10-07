@@ -27,6 +27,8 @@ add_executable(CG
         algorithms/src/line_algorithms.cpp
         algorithms/include/circle_algorithms.h
         algorithms/src/circle_algorithms.cpp
+        algorithms/include/coord.h
+        algorithms/src/coord.cpp
 )
 
 target_link_libraries(CG

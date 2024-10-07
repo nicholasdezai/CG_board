@@ -369,6 +369,10 @@ CMakeFiles/CG.dir/canvas/src/canvas.cpp.o.ddi: \
  /usr/include/qt6/QtGui/qcursor.h /usr/include/qt6/QtGui/qbitmap.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
  /usr/include/qt6/QtCore/QPoint /usr/include/qt6/QtCore/qpoint.h \
+ /usr/include/qt6/QtGui/QMatrix4x4 /usr/include/qt6/QtGui/qmatrix4x4.h \
+ /usr/include/qt6/QtGui/qvector3d.h /usr/include/qt6/QtGui/qvectornd.h \
+ /usr/include/qt6/QtGui/qvector4d.h /usr/include/qt6/QtGui/qquaternion.h \
+ /usr/include/qt6/QtGui/qgenericmatrix.h \
  /usr/include/c++/14.2.1/experimental/any \
  /usr/include/c++/14.2.1/experimental/bits/lfts_config.h \
  /home/jin/project/cpp_pro/CG/algorithms/include/line_algorithms.h \
@@ -378,7 +382,7 @@ CMakeFiles/CG.dir/canvas/src/canvas.cpp.o.ddi: \
  /usr/include/qt6/QtGui/QMouseEvent /usr/include/qt6/QtGui/qevent.h \
  /usr/include/qt6/QtCore/qcoreevent.h /usr/include/qt6/QtCore/qiodevice.h \
  /usr/include/qt6/QtCore/qurl.h /usr/include/qt6/QtGui/qeventpoint.h \
- /usr/include/qt6/QtGui/qvector2d.h /usr/include/qt6/QtGui/qvectornd.h \
+ /usr/include/qt6/QtGui/qvector2d.h \
  /usr/include/qt6/QtGui/qpointingdevice.h \
  /usr/include/qt6/QtGui/qinputdevice.h /usr/include/qt6/QtGui/qscreen.h \
  /usr/include/qt6/QtCore/QList /usr/include/qt6/QtCore/qlist.h \

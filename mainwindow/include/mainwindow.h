@@ -27,6 +27,8 @@ private slots:
 
     void setPolygonMode();
 
+    void setSelectMode();
+
     void setMidpointAlgorithm();
 
     void setBresenhamAlgorithm();

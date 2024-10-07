@@ -399,5 +399,9 @@ CMakeFiles/CG.dir/main.cpp.o.ddi: /home/jin/project/cpp_pro/CG/main.cpp \
  /usr/include/qt6/QtWidgets/QWidget /usr/include/qt6/QtWidgets/qwidget.h \
  /usr/include/qt6/QtGui/QColor /usr/include/qt6/QtGui/qcolor.h \
  /usr/include/qt6/QtCore/QPoint /usr/include/qt6/QtCore/qpoint.h \
+ /usr/include/qt6/QtGui/QMatrix4x4 /usr/include/qt6/QtGui/qmatrix4x4.h \
+ /usr/include/qt6/QtGui/qvector3d.h /usr/include/qt6/QtGui/qvectornd.h \
+ /usr/include/qt6/QtGui/qvector4d.h /usr/include/qt6/QtGui/qquaternion.h \
+ /usr/include/qt6/QtGui/qgenericmatrix.h \
  /usr/include/c++/14.2.1/experimental/any \
  /usr/include/c++/14.2.1/experimental/bits/lfts_config.h

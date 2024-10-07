@@ -152,7 +152,26 @@ build CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o: CXX_COMPILER__CG
   OBJECT_FILE_DIR = CMakeFiles/CG.dir/algorithms/src
   dyndep = CMakeFiles/CG.dir/CXX.dd
 
-build CMakeFiles/CG.dir/CXX.dd | /home/jin/project/cpp_pro/CG/cmake-build-debug/CMakeFiles/CG.dir/CXXModules.json CMakeFiles/CG.dir/main.cpp.o.modmap CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o.modmap CMakeFiles/CG.dir/canvas/src/canvas.cpp.o.modmap CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o.modmap CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o.modmap: CXX_DYNDEP__CG_Debug CMakeFiles/CG.dir/main.cpp.o.ddi CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o.ddi CMakeFiles/CG.dir/canvas/src/canvas.cpp.o.ddi CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o.ddi CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o.ddi | /home/jin/project/cpp_pro/CG/cmake-build-debug/CMakeFiles/CG.dir/CXXDependInfo.json
+build CMakeFiles/CG.dir/algorithms/src/coord.cpp.o.ddi: CXX_SCAN__CG_Debug /home/jin/project/cpp_pro/CG/algorithms/src/coord.cpp || cmake_object_order_depends_target_CG
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/CG.dir/algorithms/src/coord.cpp.o.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/CG.dir/algorithms/src/coord.cpp.o.ddi
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -mno-direct-extern-access
+  INCLUDES = -I/home/jin/project/cpp_pro/CG/mainwindow/include -I/home/jin/project/cpp_pro/CG/canvas/include -I/home/jin/project/cpp_pro/CG/algorithms/include -isystem /home/jin/project/cpp_pro/CG/cmake-build-debug/CG_autogen/include -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui
+  OBJ_FILE = CMakeFiles/CG.dir/algorithms/src/coord.cpp.o
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles/CG.dir/algorithms/src/coord.cpp.o.ddi.i
+
+build CMakeFiles/CG.dir/algorithms/src/coord.cpp.o: CXX_COMPILER__CG_scanned_Debug /home/jin/project/cpp_pro/CG/algorithms/src/coord.cpp | CMakeFiles/CG.dir/algorithms/src/coord.cpp.o.modmap || cmake_object_order_depends_target_CG CMakeFiles/CG.dir/CXX.dd
+  DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB
+  DEP_FILE = CMakeFiles/CG.dir/algorithms/src/coord.cpp.o.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles/CG.dir/algorithms/src/coord.cpp.o.modmap
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always -mno-direct-extern-access
+  INCLUDES = -I/home/jin/project/cpp_pro/CG/mainwindow/include -I/home/jin/project/cpp_pro/CG/canvas/include -I/home/jin/project/cpp_pro/CG/algorithms/include -isystem /home/jin/project/cpp_pro/CG/cmake-build-debug/CG_autogen/include -isystem /usr/include/qt6/QtCore -isystem /usr/include/qt6 -isystem /usr/lib/qt6/mkspecs/linux-g++ -isystem /usr/include/qt6/QtWidgets -isystem /usr/include/qt6/QtGui
+  OBJECT_DIR = CMakeFiles/CG.dir
+  OBJECT_FILE_DIR = CMakeFiles/CG.dir/algorithms/src
+  dyndep = CMakeFiles/CG.dir/CXX.dd
+
+build CMakeFiles/CG.dir/CXX.dd | /home/jin/project/cpp_pro/CG/cmake-build-debug/CMakeFiles/CG.dir/CXXModules.json CMakeFiles/CG.dir/main.cpp.o.modmap CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o.modmap CMakeFiles/CG.dir/canvas/src/canvas.cpp.o.modmap CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o.modmap CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o.modmap CMakeFiles/CG.dir/algorithms/src/coord.cpp.o.modmap: CXX_DYNDEP__CG_Debug CMakeFiles/CG.dir/main.cpp.o.ddi CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o.ddi CMakeFiles/CG.dir/canvas/src/canvas.cpp.o.ddi CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o.ddi CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o.ddi CMakeFiles/CG.dir/algorithms/src/coord.cpp.o.ddi | /home/jin/project/cpp_pro/CG/cmake-build-debug/CMakeFiles/CG.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -162,7 +181,7 @@ build CMakeFiles/CG.dir/CXX.dd | /home/jin/project/cpp_pro/CG/cmake-build-debug/
 #############################################
 # Link the executable CG
 
-build CG: CXX_EXECUTABLE_LINKER__CG_Debug CMakeFiles/CG.dir/CG_autogen/mocs_compilation.cpp.o CMakeFiles/CG.dir/main.cpp.o CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o CMakeFiles/CG.dir/canvas/src/canvas.cpp.o CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o | /usr/lib/libQt6Widgets.so.6.7.3 /usr/lib/libQt6Gui.so.6.7.3 /usr/lib/libQt6Core.so.6.7.3 /usr/lib/libGLX.so /usr/lib/libOpenGL.so || CG_autogen CG_autogen_timestamp_deps
+build CG: CXX_EXECUTABLE_LINKER__CG_Debug CMakeFiles/CG.dir/CG_autogen/mocs_compilation.cpp.o CMakeFiles/CG.dir/main.cpp.o CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o CMakeFiles/CG.dir/canvas/src/canvas.cpp.o CMakeFiles/CG.dir/algorithms/src/line_algorithms.cpp.o CMakeFiles/CG.dir/algorithms/src/circle_algorithms.cpp.o CMakeFiles/CG.dir/algorithms/src/coord.cpp.o | /usr/lib/libQt6Widgets.so.6.7.3 /usr/lib/libQt6Gui.so.6.7.3 /usr/lib/libQt6Core.so.6.7.3 /usr/lib/libGLX.so /usr/lib/libOpenGL.so || CG_autogen CG_autogen_timestamp_deps
   FLAGS = -g
   LINK_LIBRARIES = /usr/lib/libQt6Widgets.so.6.7.3  /usr/lib/libQt6Gui.so.6.7.3  /usr/lib/libQt6Core.so.6.7.3  /usr/lib/libGLX.so  /usr/lib/libOpenGL.so
   OBJECT_DIR = CMakeFiles/CG.dir

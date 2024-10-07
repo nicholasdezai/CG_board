@@ -5,12 +5,14 @@
 #include <QColor>
 #include <QPoint>
 #include <vector>
+#include <QMatrix4x4>
 #include <experimental/any>
 
 enum DrawMode {
     Line,
     Circle,
     Polygon,
+    Select,
 };
 
 enum Algorithms {
@@ -27,18 +29,24 @@ public:
     QColor color_;
     std::vector<QPoint> vertexes_;
     std::vector<QPoint> points_;
+    QPoint center_point_;
     Algorithms Algorithm_;
     int thickness_;
     bool is_selected_;
     int id_;
 };
 
-class Line : public Object {
+class LineObj : public Object {
 
 };
 
-class Circle : public Object {
+class CircleObj : public Object {
 
+};
+
+class PolygonObj : public Object {
+public:
+    std::vector<LineObj> lines_;
 };
 
 struct Drawing {
@@ -46,6 +54,7 @@ struct Drawing {
     QColor color;
     std::vector<QPoint> vertexes; // 添加 vertexes 以存储绘制的顶点
     std::vector<QPoint> points; // 添加 points 以存储绘制的点
+    QPoint center_point_;
     Algorithms Algorithm;  // 添加 lineAlgorithm 以区分直线生成算法
     int thickness;  // 添加 thickness 以存储线条粗细
     bool is_selected;  // 添加 is_selected 以标记是否被选中
@@ -66,6 +75,7 @@ public:
     void setAlgorithm(Algorithms algorithm);
     int getThickness() const;
     void setThickness(int thickness);
+    void clearStatus();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -73,9 +83,9 @@ protected:
     void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
     void mouseDoubleClickEvent(QMouseEvent *event) override;
+    void setDrawing(const Drawing &drawing);
 
 private:
-    Drawing tempDrawing;  // 添加 tempDrawing 以存储当前绘制的图形
     QColor color;
     QColor backgroundColor;
     DrawMode drawMode;
@@ -88,8 +98,10 @@ private:
     QPoint endPoint;
     std::vector<Drawing> drawings;     // 添加 drawings 以存储绘制的图形
     std::vector<QPoint> currentPoints; // 添加 currentPoints 以存储当前绘制的点
+    QMatrix2x4 RMat;
+    QMatrix4x4 TMat;
+    QVector4D HCTVec;
 
-    std::vector<std::experimental::any> objects;
 };
 
 #endif // CANVAS_H
