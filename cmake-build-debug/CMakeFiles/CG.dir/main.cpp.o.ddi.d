@@ -403,5 +403,9 @@ CMakeFiles/CG.dir/main.cpp.o.ddi: /home/jin/project/cpp_pro/CG/main.cpp \
  /usr/include/qt6/QtGui/qvector3d.h /usr/include/qt6/QtGui/qvectornd.h \
  /usr/include/qt6/QtGui/qvector4d.h /usr/include/qt6/QtGui/qquaternion.h \
  /usr/include/qt6/QtGui/qgenericmatrix.h \
+ /usr/include/qt6/QtWidgets/QMessageBox \
+ /usr/include/qt6/QtWidgets/qmessagebox.h \
+ /usr/include/qt6/QtWidgets/qdialog.h \
+ /usr/include/qt6/QtWidgets/qdialogbuttonbox.h \
  /usr/include/c++/14.2.1/experimental/any \
  /usr/include/c++/14.2.1/experimental/bits/lfts_config.h

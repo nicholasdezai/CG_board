@@ -101,21 +101,27 @@ void Canvas::mousePressEvent(QMouseEvent *event) {
         currentPoints.clear();
         is_selecting = false;
         id = drawings.size();
+        vertexes.push_back(startPoint);
         drawings.push_back({});
     } else if (drawMode == Circle) {
         currentPoints.clear();
         is_selecting = false;
         id = drawings.size();
+        vertexes.push_back(startPoint);
         drawings.push_back({});
     } else if (drawMode == Polygon) {
         if (vertexes.empty()) {
             id = drawings.size();
             drawings.push_back({});
         }
+        if (event->button() == Qt::LeftButton) {
+            vertexes.push_back(startPoint);
+        }
     } else if (drawMode == Select) {
+        for (auto &drawing: drawings) {
+            drawing.is_selected = false;
+        }
     }
-
-    if (event->button() == Qt::LeftButton) vertexes.push_back(startPoint);
 }
 
 void Canvas::mouseMoveEvent(QMouseEvent *event) {
@@ -149,10 +155,9 @@ void Canvas::mouseMoveEvent(QMouseEvent *event) {
 
 void Canvas::mouseReleaseEvent(QMouseEvent *event) {
     endPoint = event->pos();
-    vertexes.push_back(endPoint);
-
 
     if (drawMode == Line) {
+        vertexes.push_back(endPoint);
         const Drawing temp{
             drawMode, color, vertexes, currentPoints,
             QPoint((startPoint.x() + endPoint.x()) / 2, (startPoint.y() + endPoint.y()) / 2),
@@ -161,6 +166,7 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event) {
         setDrawing(temp);
         vertexes.clear();
     } else if (drawMode == Circle) {
+        vertexes.push_back(endPoint);
         const Drawing temp{
             drawMode, color, vertexes, currentPoints, vertexes
             [0],
@@ -169,7 +175,6 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event) {
         setDrawing(temp);
         vertexes.clear();
     } else if (drawMode == Polygon) {
-        vertexes.pop_back();
         if (event->button() == Qt::LeftButton) {
             if (vertexes.size() > 1) {
                 std::vector<QPoint> temp = bresenhamLine(vertexes[vertexes.size() - 2].x(),
@@ -198,19 +203,21 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event) {
         }
     }
 
-
     update();
 }
 
 // 双击选中图案
 void Canvas::mouseDoubleClickEvent(QMouseEvent *event) {
     // 找到选中的图形，以重心作为评判标准
-    for (auto &drawing: drawings) {
-        if (qAbs(drawing.center_point_.x() - event->pos().x()) < 10 &&
-            qAbs(drawing.center_point_.y() - event->pos().y()) < 10) {
-            drawing.is_selected = true;
-            id = drawing.id;
-            is_selecting = true;
+    if (drawMode == Select) {
+        for (auto &drawing: drawings) {
+            if (qAbs(drawing.center_point_.x() - event->pos().x()) < 10 &&
+                qAbs(drawing.center_point_.y() - event->pos().y()) < 10) {
+                drawing.is_selected = true;
+                id = drawing.id;
+                is_selecting = true;
+                break;
+            }
         }
     }
     update();

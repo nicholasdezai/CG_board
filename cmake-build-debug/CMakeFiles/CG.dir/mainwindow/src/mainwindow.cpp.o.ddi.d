@@ -391,11 +391,14 @@ CMakeFiles/CG.dir/mainwindow/src/mainwindow.cpp.o.ddi: \
  /usr/include/qt6/QtGui/qvector3d.h /usr/include/qt6/QtGui/qvectornd.h \
  /usr/include/qt6/QtGui/qvector4d.h /usr/include/qt6/QtGui/qquaternion.h \
  /usr/include/qt6/QtGui/qgenericmatrix.h \
+ /usr/include/qt6/QtWidgets/QMessageBox \
+ /usr/include/qt6/QtWidgets/qmessagebox.h \
+ /usr/include/qt6/QtWidgets/qdialog.h \
+ /usr/include/qt6/QtWidgets/qdialogbuttonbox.h \
  /usr/include/c++/14.2.1/experimental/any \
  /usr/include/c++/14.2.1/experimental/bits/lfts_config.h \
  /usr/include/qt6/QtWidgets/QColorDialog \
  /usr/include/qt6/QtWidgets/qcolordialog.h \
- /usr/include/qt6/QtWidgets/qdialog.h \
  /usr/include/qt6/QtWidgets/QVBoxLayout \
  /usr/include/qt6/QtWidgets/qboxlayout.h \
  /usr/include/qt6/QtWidgets/qlayout.h \

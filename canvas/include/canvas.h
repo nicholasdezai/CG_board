@@ -6,6 +6,7 @@
 #include <QPoint>
 #include <vector>
 #include <QMatrix4x4>
+#include <QMessageBox>
 #include <experimental/any>
 
 enum DrawMode {
