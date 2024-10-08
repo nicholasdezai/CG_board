@@ -4,6 +4,8 @@
 #include <QPainter>
 #include <QMouseEvent>
 
+#include "coord.h"
+
 Canvas::Canvas(QWidget *parent)
     : QWidget(parent), color(Qt::black), backgroundColor(Qt::white), drawMode(Line), Algorithm(Bresenham_line),
       thickness(1), is_selecting(false), id(-1) {
@@ -67,6 +69,8 @@ void Canvas::paintEvent(QPaintEvent *event) {
     for (const auto &drawing: drawings) {
         QPen pen(drawing.color, drawing.thickness);
         painter.setPen(pen);
+        painter.drawText(QPoint{50, 50}, QString("id = %1").arg(id));
+        painter.drawText(QPoint{50, 70}, QString("vertexes size = %1").arg(drawings[id].vertexes.size()));
 
         if (!drawing.points.empty()) {
             painter.drawPoints(drawing.points.data(), drawing.points.size());
@@ -92,6 +96,12 @@ void Canvas::paintEvent(QPaintEvent *event) {
         QPen pen(color, thickness);
         painter.setPen(pen);
         painter.drawPoints(currentPoints.data(), currentPoints.size());
+        if (drawMode == Select) {
+            painter.setPen(QPen(Qt::red, 5));
+            for (const auto &vertex: vertexes) {
+                painter.drawPoint(vertex);
+            }
+        }
     }
 }
 
@@ -111,6 +121,7 @@ void Canvas::mousePressEvent(QMouseEvent *event) {
         drawings.push_back({});
     } else if (drawMode == Polygon) {
         if (vertexes.empty()) {
+            currentPoints.clear();
             id = drawings.size();
             drawings.push_back({});
         }
@@ -149,6 +160,27 @@ void Canvas::mouseMoveEvent(QMouseEvent *event) {
                                                    endPoint.y() - startPoint.y(), 2)),
                                          0, 120);
         }
+    } else if (drawMode == Select) {
+        drawings[id].is_selected = true;
+        TMat = {
+            1, 0, 0, static_cast<float>(endPoint.x() - drawings[id].center_point_.x()),
+            0, 1, 0, static_cast<float>(endPoint.y() - drawings[id].center_point_.y()),
+            0, 0, 1, 0,
+            0, 0, 0, 1
+        };
+        for (auto point: drawings[id].points) {
+            const QVector4D temp = {static_cast<float>(point.x()), static_cast<float>(point.y()), 0, 1};
+            HCTVec = translation(temp, TMat);
+            point = {static_cast<int>(HCTVec[0]), static_cast<int>(HCTVec[1])};
+            currentPoints.push_back(point);
+        }
+        std::vector<QPoint> temp_vertexes;
+        for (auto vertex: drawings[id].vertexes) {
+            const QVector4D temp = {static_cast<float>(vertex.x()), static_cast<float>(vertex.y()), 0, 1};
+            HCTVec = translation(temp, TMat);
+            temp_vertexes.push_back({static_cast<int>(HCTVec[0]), static_cast<int>(HCTVec[1])});;
+        }
+        vertexes = temp_vertexes;
     }
     update();
 }
@@ -201,6 +233,28 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event) {
             setDrawing(temp);
             vertexes.clear();
         }
+    } else if (drawMode == Select) {
+        drawings[id].is_selected = true;
+        drawings[id].points = currentPoints;
+        if (!vertexes.empty()) {
+            drawings[id].vertexes = vertexes;
+            if (drawings[id].mode == Line) {
+                QPoint temp = {0, 0};
+                for (auto vertex: drawings[id].vertexes) {
+                    temp += vertex;
+                }
+                drawings[id].center_point_ = temp / drawings[id].vertexes.size();
+            } else if (drawings[id].mode == Circle) {
+                drawings[id].center_point_ = {vertexes[0].x(), vertexes[0].y()};
+            } else if (drawings[id].mode == Polygon) {
+                QPoint temp = {0, 0};
+                for (auto vertex: drawings[id].vertexes) {
+                    temp += vertex;
+                }
+                drawings[id].center_point_ = temp / drawings[id].vertexes.size();
+            }
+        }
+        vertexes.clear();
     }
 
     update();
@@ -209,6 +263,7 @@ void Canvas::mouseReleaseEvent(QMouseEvent *event) {
 // 双击选中图案
 void Canvas::mouseDoubleClickEvent(QMouseEvent *event) {
     // 找到选中的图形，以重心作为评判标准
+    currentPoints.clear();
     if (drawMode == Select) {
         for (auto &drawing: drawings) {
             if (qAbs(drawing.center_point_.x() - event->pos().x()) < 10 &&

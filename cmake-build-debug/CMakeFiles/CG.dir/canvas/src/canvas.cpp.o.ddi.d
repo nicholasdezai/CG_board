@@ -405,4 +405,5 @@ CMakeFiles/CG.dir/canvas/src/canvas.cpp.o.ddi: \
  /usr/include/qt6/QtCore/qeventloop.h \
  /usr/include/qt6/QtCore/qcoreapplication_platform.h \
  /usr/include/qt6/QtGui/qinputmethod.h /usr/include/qt6/QtCore/qlocale.h \
- /usr/include/qt6/QtGui/qguiapplication_platform.h
+ /usr/include/qt6/QtGui/qguiapplication_platform.h \
+ /home/jin/project/cpp_pro/CG/algorithms/include/coord.h

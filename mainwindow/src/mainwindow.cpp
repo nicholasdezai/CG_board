@@ -76,43 +76,54 @@ void MainWindow::changeCanvasBackgroundColor() {
 }
 
 void MainWindow::setLineMode() {
+    canvas->clearStatus();
     canvas->setDrawMode(Line);
     canvas->setAlgorithm(Bresenham_line);
 }
 
 void MainWindow::setCircleMode() {
+    canvas->clearStatus();
     canvas->setDrawMode(Circle);
     canvas->setAlgorithm(Midpoint_circle);
 }
 
 void MainWindow::setPolygonMode() {
+    canvas->clearStatus();
     canvas->setDrawMode(Polygon);
+    canvas->clearStatus();
 }
 
 void MainWindow::setSelectMode() {
+    canvas->clearStatus();
     canvas->setDrawMode(Select);
 }
 
 void MainWindow::setMidpointAlgorithm() {
+    canvas->clearStatus();
     canvas->setAlgorithm(Midpoint_line);
 }
 
 void MainWindow::setBresenhamAlgorithm() {
+    canvas->clearStatus();
     canvas->setAlgorithm(Bresenham_line);
 }
 
 void MainWindow::setMidpointCircleAlgorithm() {
+    canvas->clearStatus();
     canvas->setAlgorithm(Midpoint_circle);
 }
 
 void MainWindow::setMidpointOvalAlgorithm() {
+    canvas->clearStatus();
     canvas->setAlgorithm(Midpoint_oval);
 }
 
 void MainWindow::setplusminusArcAlgorithm() {
+    canvas->clearStatus();
     canvas->setAlgorithm(plusminus_arc);
 }
 
 void MainWindow::changeThickness(int thickness) {
+    canvas->clearStatus();
     canvas->setThickness(thickness);
 }

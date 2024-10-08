@@ -6,13 +6,13 @@
 QVector4D translation(QVector4D HCTVec,QMatrix4x4 TMat)
 {
     QVector4D result;
-    result = HCTVec * TMat;
+    result = TMat * HCTVec;
     return result;
 }
 
 QVector4D rotation(QVector4D HCTVec,QMatrix4x4 RMat)
 {
     QVector4D result;
-    result = HCTVec * RMat;
+    result = RMat * HCTVec;
     return result;
 }
